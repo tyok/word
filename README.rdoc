@@ -1,0 +1,20 @@
+== Word
+Extends String with word matching capabilities
+
+== Installation
+Install the gem:
+  gem install word
+Add it to your Gemfile:
+  gem "word"
+
+== Usage
+You can use `has_none?`, `has_any?`, `has_all?` to check if a string contain some word
+  "penguin guy".has_any? "bear"               # false
+  "penguin guy".has_any? "bear", "penguin"    # true
+
+You can also use array of string as input
+  "penguin guy".has_none? ["bear", "penguin"] # false
+  "penguin guy".has_all? ["guy", "penguin"]   # true
+
+== License
+MIT License. Copyright 2011 Mohammad Satrio.
