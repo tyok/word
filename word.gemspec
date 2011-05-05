@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Mohammad Satrio"]
   s.email       = ["wolfaeon@gmail.com"]
   s.homepage    = "https://github.com/tyok/word"
-  s.summary     = "Extend String with word searching capabilities"
-  s.description = "Extend String with word searching capabilities"
+  s.summary     = "Extends String with word matching capabilities"
+  s.description = "Extends String with word matching capabilities"
 
   s.files            = `git ls-files`.split("\n")
   s.test_files       = `git ls-files -- {test,spec,features}/*`.split("\n")
