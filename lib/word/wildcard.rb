@@ -1,0 +1,3 @@
+module Word
+  WILDCARD = /\*/
+end

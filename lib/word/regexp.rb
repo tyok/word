@@ -1,8 +1,9 @@
+require File.expand_path("../wildcard", __FILE__)
 module Word
   module Regexp
-    WILDCARD = /\*/
 
-    def word_regexp(wildcard = WILDCARD, options = nil)
+    def word_regexp(wildcard = Word::WILDCARD, options = true)
+      wildcard = wildcard || Word::WILDCARD
       prefixed = /^(#{wildcard})/
       suffixed = /(#{wildcard})$/
 
@@ -15,16 +16,8 @@ module Word
       ::Regexp.new(w, options)
     end
 
-    # "a b 'c d'" => ["a", "b", "\"c d\""]
-    def extract_words(wildcard = WILDCARD)
-      word = /".*?"|'.*?'|#{wildcard}?\w+#{wildcard}?/ # "word1 word2" | 'word1 word2' | word
-      scan(word).flatten.map{|x| x.gsub(/"|'/, '"')}.uniq
-    end
-
-    private
-
-    def has_any_regexp(words, wildcard = WILDCARD)
-      /#{words.map{|w| w.word_regexp(wildcard, true)}.join('|')}/
+    def self.has_any_regexp(words, wildcard = Word::WILDCARD, options = true)
+      /#{words.map{|w| w.word_regexp(wildcard, options)}.join('|')}/
     end
 
   end
